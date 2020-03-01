@@ -1,0 +1,9 @@
+patches/dwm-noborder-6.2.diff
+patches/dwm-autostart-20161205-bb3bd6f.diff
+patches/dwm-center-20160719-56a31dc.diff
+patches/dwm-warp-git-20160626-7af4d43.diff
+patches/dwm-notitle-6.2.diff
+patches/dwm-ru_gaps-6.2.diff
+patches/dwm-pertag-20170513-ceac8c9.diff
+patches/dwm-xrdb-6.2.diff
+patches/dwm-boo-dwmc.diff
