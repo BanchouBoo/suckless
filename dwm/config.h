@@ -48,6 +48,8 @@ static const Rule rules[] = {
 	{ "qBittorrent", NULL,       NULL,          1 << 8,       0,             0,           -1 },
 
 	{ "lemonbar",    NULL,       NULL,          0,            0,             1,           -1 },
+
+	{ "fzfmenu",     NULL,       NULL,          0,            1,             1,           -1 },
 };
 
 
