@@ -2,8 +2,9 @@
 
 ############################### SETTINGS ##############################
 
-ST_VERSION=51e19ea11dd42eefed1ca136ee3f6be975f618b1  # 18 Feb 2020
-DWM_VERSION=cb3f58ad06993f7ef3a7d8f61468012e2b786cab # 02 Feb 2019
+ST_VERSION=51e19ea11dd42eefed1ca136ee3f6be975f618b1    # Feb 18 2020
+DWM_VERSION=cb3f58ad06993f7ef3a7d8f61468012e2b786cab   # Feb 02 2019
+SLOCK_VERSION=35633d45672d14bd798c478c45d1a17064701aa9 # Mar 25 2017
 
 SCRIPT_PATH="$(realpath "$(dirname "$0")")"
 
@@ -43,6 +44,9 @@ for name in "$@"; do
 			;;
 		dwm)
 			clone "$name" "$DWM_VERSION"
+			;;
+		slock)
+			clone "$name" "$SLOCK_VERSION"
 			;;
 		*)
 			die "Invalid option '$name'"
