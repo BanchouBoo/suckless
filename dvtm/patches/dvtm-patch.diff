@@ -1,0 +1,13 @@
+diff --git a/dvtm.c b/dvtm.c
+index 2b7ebdc..d59ba9b 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -116,7 +116,7 @@ typedef struct {
+ 	const char *args[3];
+ } Action;
+ 
+-#define MAX_KEYS 3
++#define MAX_KEYS 2
+ 
+ typedef unsigned int KeyCombo[MAX_KEYS];
+ 

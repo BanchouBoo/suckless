@@ -5,6 +5,7 @@
 ST_VERSION=51e19ea11dd42eefed1ca136ee3f6be975f618b1    # Feb 18 2020
 DWM_VERSION=cb3f58ad06993f7ef3a7d8f61468012e2b786cab   # Feb 02 2019
 SLOCK_VERSION=35633d45672d14bd798c478c45d1a17064701aa9 # Mar 25 2017
+DVTM_VERSION=311a8c0c28296f8f87fb63349e0f3254c7481e14  # Mar 30 2018
 
 SCRIPT_PATH="$(realpath "$(dirname "$0")")"
 
@@ -20,16 +21,20 @@ die() {
 }
 
 usage() {
-	die "Usage: ./build.sh [dwm] [st]"
+	die "Usage: ./build.sh [dwm] [st] [slock] [dvtm]"
 }
 
 clone() {
+	name="$1"
+	commit="$2"
+	gitbaseurl="${3:-git://git.suckless.org}"
+
 	mkdir -p .builds && cd .builds
-	[ -d "$1" ] || git clone "git://git.suckless.org/$1"
-	cd "$1"
+	[ -d "$name" ] || git clone "$gitbaseurl/$name"
+	cd "$name"
 	git clean -df
 	git fetch --all
-	git reset --hard "$2"
+	git reset --hard "$commit"
 	cd "$SCRIPT_PATH"
 }
 
@@ -48,6 +53,9 @@ for name in "$@"; do
 		slock)
 			clone "$name" "$SLOCK_VERSION"
 			;;
+		dvtm)
+			clone "$name" "$DVTM_VERSION" "git://github.com/martanne"
+			;;
 		*)
 			die "Invalid option '$name'"
 			;;
@@ -58,12 +66,13 @@ for name in "$@"; do
 
 	cd "$build_path"
 
+	sed -e 's/#.*$//g' -e '/^[[:space:]]*$/d' "$source_path/patchlist" | \
 	while read -r patch; do
 		patch_path="$source_path/$patch"
 		[ -f "$patch_path" ] || die "$patch_path is not a file"
 		log "Applying $patch..."
 		patch -F 3 -l -p1 < "$patch_path"
-	done < "$source_path/patchlist"
+	done
 
 	printf "\n"
 
