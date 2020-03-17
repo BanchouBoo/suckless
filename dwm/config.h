@@ -33,8 +33,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class         instance    title          tags mask     iscentered     isfloating   monitor */
-	{ "Emacs",       NULL,       "org-capture", 0,            0,             1,           -1 },
-
 	{ "Godot",       NULL,       NULL,          1 << 2,       0,             0,           -1 },
 	{ "zeal",        NULL,       NULL,          1 << 2,       0,             0,           -1 },
 
@@ -50,6 +48,7 @@ static const Rule rules[] = {
 	{ "lemonbar",    NULL,       NULL,          0,            0,             1,           -1 },
 
 	{ "fzfmenu",     NULL,       NULL,          0,            1,             1,           -1 },
+	{ "booker",      NULL,       NULL,          0,            1,             1,           -1 },
 };
 
 
