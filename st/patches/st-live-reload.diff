@@ -1,3 +1,4 @@
+Patch made by viz (https://github.com/vizs/), using xst (https://github.com/gnotclub/xst) and PaxPlay's stmessage (https://github.com/PaxPlay/thememenu) as reference
 diff --git a/st.c b/st.c
 index 3e48410..a100514 100644
 --- a/st.c
