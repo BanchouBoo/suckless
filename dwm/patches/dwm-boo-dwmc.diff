@@ -241,7 +241,7 @@ index 0000000..f621553
 +	view)
 +		signal $1 ui $2
 +		;;
-+	viewex | toggleviewex | tagex | toggletagex | setlayoutex | focusstack | incnmaster | focusmon | tagmon)
++	setgaps | viewex | toggleviewex | tagex | toggletagex | setlayoutex | focusstack | incnmaster | focusmon | tagmon)
 +		signal $1 i $2
 +		;;
 +	setmfact)
