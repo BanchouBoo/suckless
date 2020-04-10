@@ -66,6 +66,8 @@ for name in "$@"; do
 
 	cd "$build_path"
 
+	[ -f "$source_path/config.mk" ] && cp "$source_path/config.mk" .
+
 	sed -e 's/#.*$//g' -e '/^[[:space:]]*$/d' "$source_path/patchlist" | \
 	while read -r patch; do
 		patch_path="$source_path/$patch"
@@ -79,7 +81,7 @@ for name in "$@"; do
 	[ -f "$source_path/config.h" ] && cp -i "$source_path/config.h" "$build_path"
 
 	make clean > /dev/null
-	sudo make install
+	make install
 
 	cd "$SCRIPT_PATH"
 done
