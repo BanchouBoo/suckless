@@ -1,0 +1,41 @@
+Selecting the wallpaper won't error, but instead select the entire screen
+diff --git a/crud.c b/crud.c
+index 2a86cc3..54fd192 100644
+--- a/crud.c
++++ b/crud.c
+@@ -249,16 +249,25 @@ int main(int argc, char **argv) {
+         unsigned int m;
+ 
+         if (XQueryPointer(display, root, &hroot, &hovered, &rx, &ry, &hx, &hy, &m)) {
+-          XWindowAttributes attrs;
+-          XGetWindowAttributes(display, hovered, &attrs);
+-          // update with the selected window's attributes
+-          set_selection(&ws, (Selection) {
+-            .x = attrs.x,
+-            .y = attrs.y,
+-            .width = attrs.width,
+-            .height = attrs.height,
+-            .border = BORDER
+-          });
++          if (hovered == 0) {
++            Screen* sscreen = ScreenOfDisplay(display, DefaultScreen(display));
++            set_selection(&ws, (Selection) {
++              .x = 0, .y = 0,
++              .width = WidthOfScreen(sscreen), .height = HeightOfScreen(sscreen),
++              .border = 0
++            });
++          } else {
++            XWindowAttributes attrs;
++            XGetWindowAttributes(display, hovered, &attrs);
++            // update with the selected window's attributes
++            set_selection(&ws, (Selection) {
++              .x = attrs.x,
++              .y = attrs.y,
++              .width = attrs.width,
++              .height = attrs.height,
++              .border = BORDER
++            });
++          }
+         }
+       }
+ 
