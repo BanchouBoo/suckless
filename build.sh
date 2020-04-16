@@ -22,7 +22,7 @@ die() {
 }
 
 usage() {
-	die "Usage: ./build.sh [dwm] [st] [slock] [dvtm]"
+	die "Usage: ./build.sh [dwm] [st] [slock] [dvtm] [crud]"
 }
 
 clone() {
