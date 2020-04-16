@@ -1,2 +1,2 @@
-#define FOREGROUND_COLOR 0x888888
+#define FOREGROUND_COLOR 0x49acaa
 #define BORDER 3
