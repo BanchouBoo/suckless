@@ -58,6 +58,6 @@ index 6406925..de41086 100644
  		if (ms->release == release &&
  		    ms->button == e->xbutton.button &&
 +		    (!ms->altscrn || (ms->altscrn == (tisaltscr() ? 1 : -1))) &&
- 		    (match(ms->mod, e->xbutton.state) ||  /* exact or forced */
- 		     match(ms->mod, e->xbutton.state & ~forcemousemod))) {
+		    (match(ms->mod, state) ||  /* exact or forced */
+		     match(ms->mod, state & ~forcemousemod))) {
  			ms->func(&(ms->arg));
