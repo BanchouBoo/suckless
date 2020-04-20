@@ -226,6 +226,13 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
+/* External pipe commands */
+
+// select a word on the screen with fzf and copy it
+static char *copyword[] = { "/bin/sh", "-c",
+	"for word in $(cat); do echo $word; done | uniq | fzfmenu | xclip -sel clip -r",
+	"externalpipe", NULL };
+
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
@@ -246,6 +253,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,              XK_W,           externalpipe,   { .v = copyword } },
 };
 
 /*
