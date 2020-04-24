@@ -6,8 +6,6 @@ static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 5;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 0;        /* vertical padding of bar */
-static const int horizpad           = 0;        /* horizontal padding of bar */
 static const char *fonts[]          = {
                                       "Fira Code Medium:size=12",
                                       "Font Awesome 5 Free Regular:size=11",
@@ -35,9 +33,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class         instance    title          tags mask     iscentered     isfloating   monitor */
-	{ "Godot",       NULL,       NULL,          1 << 2,       0,             0,           -1 },
-	{ "zeal",        NULL,       NULL,          1 << 2,       0,             0,           -1 },
-
 	{ "discord",     NULL,       NULL,          1 << 3,       0,             0,           -1 },
 	{ "St",          "weechat",  NULL,          1 << 3,       0,             0,           -1 },
 
@@ -175,6 +170,4 @@ static Signal signals[] = {
 	{ "setlayoutex",    setlayoutex },
 	{ "xrdb",           xrdb },
 	{ "setgaps",        setgaps },
-	{ "setvertpad",     setvertpad },
-	{ "sethorizpad",    sethorizpad },
 };
