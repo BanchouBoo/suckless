@@ -1,9 +1,10 @@
 Selecting the wallpaper won't error, but instead select the entire screen
+Made by https://github.com/vizs
 diff --git a/crud.c b/crud.c
-index 2a86cc3..54fd192 100644
+index b9cdf8f..f88a62d 100644
 --- a/crud.c
 +++ b/crud.c
-@@ -249,16 +249,25 @@ int main(int argc, char **argv) {
+@@ -228,15 +228,25 @@ int main(int argc, char **argv) {
          unsigned int m;
  
          if (XQueryPointer(display, root, &hroot, &hovered, &rx, &ry, &hx, &hy, &m)) {
@@ -14,15 +15,15 @@ index 2a86cc3..54fd192 100644
 -            .x = attrs.x,
 -            .y = attrs.y,
 -            .width = attrs.width,
--            .height = attrs.height,
--            .border = BORDER
+-            .height = attrs.height
 -          });
-+          if (hovered == 0) {
++          if (hovered ==  0) {
 +            Screen* sscreen = ScreenOfDisplay(display, DefaultScreen(display));
 +            set_selection(&ws, (Selection) {
-+              .x = 0, .y = 0,
-+              .width = WidthOfScreen(sscreen), .height = HeightOfScreen(sscreen),
-+              .border = 0
++              .x = 0,
++              .y = 0,
++              .width = WidthOfScreen(sscreen),
++              .height = HeightOfScreen(sscreen)
 +            });
 +          } else {
 +            XWindowAttributes attrs;
@@ -32,8 +33,7 @@ index 2a86cc3..54fd192 100644
 +              .x = attrs.x,
 +              .y = attrs.y,
 +              .width = attrs.width,
-+              .height = attrs.height,
-+              .border = BORDER
++              .height = attrs.height
 +            });
 +          }
          }
