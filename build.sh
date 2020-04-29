@@ -83,7 +83,7 @@ for name in "$@"; do
 	[ -d "$source_path/cfg" ] && cp "$source_path/cfg"/* "$build_path"
 
 	make clean > /dev/null
-	make && make install
+	make -j 8 && make install
 
 	cd "$SCRIPT_PATH"
 done
