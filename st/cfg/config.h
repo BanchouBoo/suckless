@@ -230,7 +230,7 @@ static MouseShortcut mshortcuts[] = {
 
 // select a word on the screen with fzf and copy it
 static char *copyword[] = { "/bin/sh", "-c",
-	"for word in $(cat); do echo $word; done | uniq | fzfmenu | xclip -sel clip -r",
+	"for word in $(cat); do echo $word; done | sort -u | fzfmenu | xclip -sel clip -r",
 	"externalpipe", NULL };
 
 /* Internal keyboard shortcuts. */
