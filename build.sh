@@ -6,7 +6,7 @@ ST_VERSION=045a0fab4f80b57f4a982ae6bc5f33fe21d66111    # May 06 2020
 DWM_VERSION=a8e9513783f335b1ac7255e40a663adfffc4b475   # Apr 20 2020
 SLOCK_VERSION=35633d45672d14bd798c478c45d1a17064701aa9 # Mar 25 2017
 DVTM_VERSION=311a8c0c28296f8f87fb63349e0f3254c7481e14  # Mar 30 2018
-CRUD_VERSION=05a0aba11015244bf09ea397e877348ba2e48277  # Apr 26 2020
+BOOX_VERSION=bbbb883436d505b5f85cbb3024d14c82da548d9b  # Jul 31 2020
 
 SCRIPT_PATH="$(realpath "$(dirname "$0")")"
 
@@ -57,8 +57,8 @@ for name in "$@"; do
 		dvtm)
 			clone "$name" "$DVTM_VERSION" "git://github.com/martanne"
 			;;
-		crud)
-			clone "$name" "$CRUD_VERSION" "git://github.com/ix"
+		boox)
+			clone "$name" "$BOOX_VERSION" "git://github.com/BanchouBoo"
 			;;
 		*)
 			die "Invalid option '$name'"
@@ -80,7 +80,7 @@ for name in "$@"; do
 
 	printf "\n"
 
-	[ -d "$source_path/cfg" ] && cp "$source_path/cfg"/* "$build_path"
+	[ -d "$source_path/cfg" ] && cp -r "$source_path/cfg"/* "$build_path"
 
 	make clean > /dev/null
 	make -j 8 && make install
